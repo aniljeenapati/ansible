@@ -1,3 +1,7 @@
+provider "google" {
+  project     = "primal-gear-436812-t0"            
+  region      = "us-central1"               
+}
 resource "google_compute_instance_template" "default" {
   name           = "apache-instance-template"
   machine_type   = "e2-medium"
@@ -13,14 +17,6 @@ resource "google_compute_instance_template" "default" {
     network = "default"
     access_config {}
   }
-  metadata_startup_script = <<-EOF
-    #!/bin/bash
-    sudo apt-get update -y
-    sudo apt-get install -y apache2
-    sudo systemctl start apache2
-    sudo systemctl enable apache2
-    EOF
-}
 resource "google_compute_instance_group_manager" "default" {
   name               = "apache-instance-group"
   version {
