@@ -39,7 +39,7 @@ resource "null_resource" "update_inventory" {
       ansible_host: ${google_compute_instance.centos_vm.network_interface.0.access_config.0.nat_ip}
       ansible_user: centos
       ansible_ssh_private_key_file: /root/.ssh/id_rsa
-' > /var/lib/jenkins/workspace/terra-ans/inventory.gcp.yml
+' > /var/lib/jenkins/workspace/git-terra-ans/inventory.gcp.yml
     EOT
   }
   depends_on = [google_compute_instance.centos_vm]
